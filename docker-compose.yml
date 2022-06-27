@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    volumes:
+      - ./:/imports
+      - influxdb_data:/var/lib/influxdb
+    container_name: influxdb
+    env_file:
+      - configuration.env
+    ports:
+      - 8086:8086
+    restart: always
+
+  grafana:
+    image: grafana/grafana-enterprise:8.5.3
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards/:/var/lib/grafana/dashboards
+    container_name: grafana
+    env_file:
+      - configuration.env
+    links:
+      - influxdb
+    depends_on:
+      - influxdb
+    ports:
+      - 3000:3000
+    restart: always
+
+  telegraf:
+    image: telegraf
+    volumes:
+      - ./telegraf/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on: 
+      - influxdb
+    links:
+      - influxdb
+    container_name: telegraf
+    ports:
+      - 8125:8125/udp
+    restart: always
+
+volumes:
+  grafana_data: {}
+  influxdb_data: {}
