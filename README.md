@@ -3,26 +3,33 @@
 ## Folder structure
 ```
 grafana-influxdb-telegraf
-|   configuration.env
-|   docker-compose.yml
-|   README.md
-|
-└───grafana
-|   |
-|   └───dashboards
-|           dashboards.json
-|
-└───images
-|       ...
-|
-└───publisher
-|       pub.py
-|
-└───telegraf
-    |
-    └───config
-    |       sample.conf
-    |       telegraf.conf
+│  configuration.env
+│  docker-compose.yml
+│  README.md
+│
+├─grafana
+│  ├─config
+│  │      grafana.ini
+│  │
+│  └─dashboards
+│          dashboard.json
+│
+├─images
+│      add-data-resources.png
+│      dashboard.png
+│      get-into-the-dashboard.png
+│      import-dashboard.png
+│      panels-on-the-dashboard.png
+│      search-influxdb-service.png
+│
+├─publisher
+│      pub-sample.py
+│      pub.py
+│
+└─telegraf
+    └─config
+            sample.conf
+            telegraf.conf
 ```
 
 ## Environment information

@@ -18,6 +18,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/dashboards/:/var/lib/grafana/dashboards
+      - ./grafana/config/grafana.ini:/etc/grafana/grafana.ini:ro
     container_name: grafana
     env_file:
       - configuration.env
