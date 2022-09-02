@@ -13,10 +13,10 @@ ISOTIMEFORMAT = '%Y-%m-%d %H:%M:%S'
 client = mqtt.Client()
 
 # 設定登入帳號密碼
-# client.username_pw_set("iii", "iii05076416")
+client.username_pw_set("iii", "iii05076416")
 
 # 設定連線資訊(IP, Port, 連線時間)
-client.connect("192.168.1.125", 1883, 60)
+client.connect("192.168.1.85", 1883, 60)
 
 while True:
     # 發布的內容
